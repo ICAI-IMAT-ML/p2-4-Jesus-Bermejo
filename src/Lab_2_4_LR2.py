@@ -98,12 +98,12 @@ class LinearRegressor:
         # Antes había np.random.rand(X.shape[1] - 1) * 0.01
         self.intercept = np.random.rand() * 0.01
 
-        # Implement gradient descent (TODO)
+        # Implement gradient descent 
         for epoch in range(iterations):
             predictions = self.predict(X[:, 1:])
             error = predictions - y
 
-            # TODO: Write the gradient values and the updates for the paramenters
+            # Write the gradient values and the updates for the paramenters
             gradient_w = []
             for j in range(1,X.ndim):
                 w = (2*learning_rate/m) * np.sum(np.dot(X.T**j, error))
@@ -113,7 +113,7 @@ class LinearRegressor:
             self.intercept -= learning_rate*gradient_b
             self.coefficients -=  gradient_w
 
-            # TODO: Calculate and print the loss every 10 epochs
+            # Calculate and print the loss every 10 epochs
             if epoch % 1000 == 0:
                 mse = np.mean(error**2)
                 print(f"Epoch {epoch}: MSE = {mse}")
